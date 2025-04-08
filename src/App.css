@@ -4,6 +4,15 @@ img {
   height: 308px;
 }
 
+h1 {
+  display: flex;
+  justify-content: center;
+}
+
+.searchBar {
+  margin-left: 25px;
+}
+
 .politicians-list {
   display: flex;
   flex-wrap: wrap;
