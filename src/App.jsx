@@ -1,5 +1,20 @@
-import { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import "./App.css";
+
+function politicianCard({ name, image, position, biography }) {
+  console.log("Card");
+
+  return (
+    <div className="card">
+      <img src={image} />
+      <h2>Nome: {name}</h2>
+      <p>Posizione: {position}</p>
+      <p>{biography}</p>
+    </div>
+  );
+}
+
+const Card = React.memo(politicianCard);
 
 function App() {
   const [politicians, setPoliticians] = useState([]);
@@ -21,7 +36,7 @@ function App() {
     return filteredArray;
   }, [politicians, search]);
 
-  console.log(politicians);
+  // console.log(politicians);
 
   return (
     <div>
@@ -34,12 +49,7 @@ function App() {
       <h1>Cards Politici</h1>
       <div className="politicians-list">
         {filteredList.map((politician) => (
-          <div className="card" key={politician.id}>
-            <img src={politician.image} />
-            <h2>Nome: {politician.name}</h2>
-            <p>Posizione: {politician.position}</p>
-            <p>{politician.biography}</p>
-          </div>
+          <Card key={politician.id} {...politician} />
         ))}
       </div>
     </div>
